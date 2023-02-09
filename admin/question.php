@@ -1,3 +1,24 @@
+<?php
+         include "../connection.php";
+            if (isset($_POST['submit'])) {
+                $title = $_POST['subject'];
+                $question = $_POST['question'];
+                $option_a = $_POST['option-a'];
+                $option_b = $_POST['option-b'];
+                $option_c = $_POST['option-c'];
+                $option_d = $_POST['option-d'];
+                $answer = $_POST['answer'];
+                $sql = " INSERT INTO question VALUES (NULL,'$title','$question', '$option_a', '$option_b','$option_c','$option_d', '$answer')";
+
+                if (mysqli_query($con, $sql)) {
+                    header('location:question.php');
+                } else {
+                    die(mysqli_error($con));
+                }
+                mysqli_close($con);
+            }
+            ?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,10 +78,11 @@
                                 }
                                 ?>
                             </select>
+                           
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Question</label>
-                            <textarea name="question" class="form-control" cols="120" rows="3"></textarea>
+                            <input type="Text" class="form-control" name="question" style="height: 60px;">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">option-a</label>
@@ -87,34 +109,58 @@
                     </div>
 
                 </form>
+
+                <div class="container my-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Question</th>
+                                <th>opt_a</th>
+                                <th>opt_b</th>
+                                <th>opt_c</th>
+                                <th>opt_d</th>
+                                <th>Answer</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = " SELECT * FROM question";
+                            if ($result = mysqli_query($con, $query)) {
+                                $rowcount = mysqli_num_rows($result);
+                            }
+
+                            for ($i = 0; $i < $rowcount; $i++) {
+                                $row = mysqli_fetch_array($result);
+                                echo "
+                                                <tr>
+                                                    <th>$row[id]</th>
+                                                    <td>$row[title]</td>
+                                                    <td>$row[question]</td>
+                                                    <td>$row[opt1]</td>
+                                                    <td>$row[opt2]</td>
+                                                    <td>$row[opt3]</td>
+                                                    <td>$row[opt4]</td>
+                                                    <td>$row[answer]</td>
+                                                    <td>
+                                                    <a class='btn btn-success' href='edit1.php?id=$row[id]'>Edit</a>
+                                                    <a class='btn btn-danger' href='delete1.php?id=$row[id]'>Delete</a>
+                                                            </td>
+                                                </tr>
+                                                ";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
                 <!-- /add exam -->
                 <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1076" height="454" style="display: block; width: 1076px; height: 454px;"></canvas>
             </main>
             <!-- /head -->
         </div>
     </div>
-
-    <?php
-            if (isset($_POST['submit'])) {
-
-
-                $title = $_POST['subject'];
-                $question = $_POST['question'];
-                $option_a = $_POST['option-a'];
-                $option_b = $_POST['option-b'];
-                $option_c = $_POST['option-c'];
-                $option_d = $_POST['option-d'];
-                $answer = $_POST['answer'];
-                $sql = " INSERT INTO question VALUES (NULL,'$title','$question', '$option_a', '$option_b','$option_c','$option_d', '$answer')";
-
-                if (mysqli_query($con, $sql)) {
-                    header('location:index.php');
-                } else {
-                    die(mysqli_error($con));
-                }
-                mysqli_close($con);
-            }
-            ?> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
