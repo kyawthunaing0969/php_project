@@ -29,24 +29,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Document</title>
 </head>
-
+<style>
+   a:link {text-decoration:none;}
+</style>
 <body>
     <!-- nav -->
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-info">
         <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-info" href="add.php">
+                    <a class="nav-link active text-black" href="add.php">
                         <h5>Add Subject</h5>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active mx-4 text-info" href="question.php">
+                    <a class="nav-link active mx-4 text-black" href="question.php">
                         <h5>Add Question</h5>
                     </a>
                 </li>
             </ul>
-            <a href="home.html" class="text-black">Log Out</a>
+            <a href="../home.php" class="text-black"><strong>Log Out</strong></a>
         </div>
     </nav>
     <!--/nav -->
@@ -70,11 +72,14 @@
                             <select name="subject" class="form-select" aria-label="Default select example">
                                 <?php
                                 include "../connection.php";
-                                $Title = '';
+                               
+                                $title = '';
                                 $res = mysqli_query($con, " select title from addexam ");
                                 while ($row = mysqli_fetch_array($res)) {
-                                    $Title = $row["title"];
-                                    echo "<option value='$Title'>$Title</option>";
+                                    // $id = $row["id"];
+                                    $title = $row["title"];
+                                    // echo "<option value='$id'>$id</option>";
+                                    echo "<option value='$title'>$title</option>";
                                 }
                                 ?>
                             </select>
@@ -117,10 +122,10 @@
                                 <th>ID</th>
                                 <th>Title</th>
                                 <th>Question</th>
-                                <th>opt_a</th>
-                                <th>opt_b</th>
-                                <th>opt_c</th>
-                                <th>opt_d</th>
+                                <th>option_a</th>
+                                <th>option_b</th>
+                                <th>option_c</th>
+                                <th>option_d</th>
                                 <th>Answer</th>
                                 <th>Actions</th>
                             </tr>

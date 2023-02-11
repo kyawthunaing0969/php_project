@@ -2,7 +2,6 @@
 <?php
  include "../connection.php";
  $id = $_GET["id"];
- echo $id;
  $res = mysqli_query($con, "select * from question where id = $id");
  while($row = mysqli_fetch_array($res)){
     $Title = $row["title"];
@@ -25,7 +24,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Document</title>
 </head>
-
+<style>
+   a:link {text-decoration:none;}
+</style>
 <body>
     <!-- nav -->
     <nav class="navbar navbar-expand-lg bg-light">
@@ -42,7 +43,7 @@
                     </a>
                 </li>
             </ul>
-            <a href="home.html" class="text-black">Log Out</a>
+            <a href="../home.php" class="text-black"><strong>Log Out</strong></a>
         </div>
     </nav>
     <!--/nav -->

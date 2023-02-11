@@ -1,17 +1,70 @@
-<?php
-include "../connection.php";
-if (isset($_POST['submit'])) {
-    $title = $_POST['title'];
-    $time = $_POST['time'];
-    $sql = " INSERT INTO addexam(title, time) VALUES ( '$title', '$time' ) ";
 
-    if (mysqli_query($con, $sql)) {
-        header('location:add.php');
-    } else {
-        die(mysqli_error($con));
+<?php 
+// Include the database configuration file  
+include "../connection.php";
+ 
+// If file upload form is submitted 
+$status = $statusMsg = ''; 
+if(isset($_POST["submit"])){ 
+    $status = 'error'; 
+    
+    if(isset($_POST['submit'])){
+        //Taking the files from input
+        $file = $_FILES['file'];
+        //Getting the file name of the uploaded file
+        $fileName = $_FILES['file']['name'];
+        //Getting the Temporary file name of the uploaded file
+        $fileTempName = $_FILES['file']['tmp_name'];
+        //Getting the file size of the uploaded file
+        $fileSize = $_FILES['file']['size'];
+        //getting the no. of error in uploading the file
+        $fileError = $_FILES['file']['error'];
+        //Getting the file type of the uploaded file
+        $fileType = $_FILES['file']['type'];
+    
+        //Getting the file ext
+        $fileExt = explode('.',$fileName);
+        $fileActualExt = strtolower(end($fileExt));
+    
+        //Array of Allowed file type
+        $allowedExt = array("jpg","jpeg","png","pdf");
+    
+        //Checking, Is file extentation is in allowed extentation array
+        if(in_array($fileActualExt, $allowedExt)){
+            //Checking, Is there any file error
+            if($fileError == 0){
+                //Checking,The file size is bellow than the allowed file size
+                if($fileSize < 10000000){
+                    //Creating a unique name for file
+                    $fileNemeNew = uniqid('',true).".".$fileActualExt;
+                    //File destination
+                    $fileDestination = '../images/'.$fileNemeNew;
+                    //function to move temp location to permanent location
+                    move_uploaded_file($fileTempName, $fileDestination);
+                    $title = $_POST['title'];
+                    $time = $_POST['time'];
+                    // Insert image content into database 
+                    $insert = $con->query("INSERT into addexam (title,image, time) VALUES ('$title','$fileNemeNew', '$time')"); 
+                     
+                    //Message after success
+                    echo "File Uploaded successfully";
+                }else{
+                    //Message,If file size greater than allowed size
+                    echo "File Size Limit beyond acceptance";
+                }
+            }else{
+                //Message, If there is some error
+                echo "Something Went Wrong Please try again!";
+            }
+        }else{
+            //Message,If this is not a valid file type
+            echo "You can't upload this extention of file";
+        }
     }
-    mysqli_close($con);
-}
+} 
+ 
+// Display status message 
+// echo $imageContent; 
 ?>
 
 <!DOCTYPE html>
@@ -25,25 +78,25 @@ if (isset($_POST['submit'])) {
     <title>Document</title>
 </head>
 <style>
-   
+   a:link {text-decoration:none;}
 </style>
 <body>
     <!-- nav -->
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-info">
         <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-info" href="add.php">
+                    <a class="nav-link active text-black" href="add.php">
                         <h5>Add Subject</h5>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active mx-4 text-info" href="question.php">
+                    <a class="nav-link active mx-4 text-black" href="question.php">
                         <h5>Add Question</h5>
                     </a>
                 </li>
             </ul>
-            <a href="home.html" class="text-black">Log Out</a>
+            <a href="../home.php" class="text-black"><strong>Log Out</strong></a>
         </div>
     </nav>
     <!--/nav -->
@@ -59,8 +112,12 @@ if (isset($_POST['submit'])) {
 
                 </div>
                 <!-- add exam -->
-                <form method="post" d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <form method="post" enctype="multipart/form-data" class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">image</label>
+                            <input type="file" class="form-control" name="file" placeholder="image">
+                        </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Title</label>
                             <input type="Text" class="form-control" name="title" placeholder="add exam title">
@@ -71,40 +128,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary">Add New</button>
                     </div>
-                </form>
-
-                <!-- start edit modal form -->
-                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h1 class="modal-title fs-5 " id="exampleModalLabel">Edit Exam</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Title</label>
-                                            <input type="Text" class="form-control" name="title"  placeholder="add exam title">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputPassword1" class="form-label">Time</label>
-                                            <input type="Text" class="form-control" name="time"  placeholder=" exam time in minutes">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary">Update</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div> -->
-                <!-- end edit modal form -->
-
-            
+                </form>          
 
                 <div class="container my-4">
                     <table class="table">
@@ -113,6 +137,7 @@ if (isset($_POST['submit'])) {
                                 <th>ID</th>
                                 <th>Add Subject</th>
                                 <th>Exam time in minutes</th>
+                                <th>Images</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -130,6 +155,7 @@ if (isset($_POST['submit'])) {
                                                     <th>$row[id]</th>
                                                     <td>$row[title]</td>
                                                     <td>$row[time]</td>
+                                                    <td><img src='../images/$row[image]' width='40' height='40'></td>
                                                     <td>
                                                     <a class='btn btn-success' href='edit.php?id=$row[id]'>Edit</a>
                                                     <a class='btn btn-danger' href='delete.php?id=$row[id]'>Delete</a>
