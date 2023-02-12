@@ -76,9 +76,7 @@
                                 $title = '';
                                 $res = mysqli_query($con, " select title from addexam ");
                                 while ($row = mysqli_fetch_array($res)) {
-                                    // $id = $row["id"];
                                     $title = $row["title"];
-                                    // echo "<option value='$id'>$id</option>";
                                     echo "<option value='$title'>$title</option>";
                                 }
                                 ?>

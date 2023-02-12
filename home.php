@@ -1,36 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg bg-light mb-5">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./admin/login.php">admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./login.php">login</a>
-                    </li>
-                </ul>
-                <a href="http://" class="text-black">Log Out</a>
-            </div>
-        </div>
-    </nav>
-    <h1>HOME Page</h1>
-</body>
-</html>
+<html>
+    <style>
+        body{
+          background-image:url(images/home1.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+        
+          }
+        h1{
+            margin-top:100px;
+            text-align: center;
+            font-size: 80px;
+            color:chartreuse;            
+        }
+        h3{
+             /* margin-top: 70px; */
+            text-align:center;
+            padding-top:20px;
+            color:yellow;
+            font-size: 50px;
+            
+        }
+        .f1{
+            text-align:center;
+            padding-top:60px;
+          }
+          .button{
+            padding:5px 20px;
+            font-size:30px;
+            color:blue;
+            border-radius: 9px;
+
+          }
+          h5{
+           
+            padding-top:1px;
+            font-family: castellar;
+           text-align:center;
+           color: white;
+           font-size:20px;
+          }
+          a:link {text-decoration:none;}
+
+        
+    </style>
+    <head>
+        <title>ONLINE QUIZ SYSTEM</title>
+    </head>
+    <body><h1>Online Quiz System</h1>
+
+        <form action="" class="f1" method="post">
+            <button type="submit" name="login" class="button" value="Login"><a href="login.php">Login</a></button>
+            <button type="submit" name="register" class="button" value="Register"><a href="register.php">Register</a></button>
+        </form>
+        <h3>GOOD LUCK.</h3>
+        <h5>Welcome to Online Quize login and answer</h5>
+    </body>

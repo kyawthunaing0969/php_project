@@ -13,6 +13,15 @@ include "connection.php";
 
 </head>
 <style>
+     body{
+       width: 100%;
+       background: url(images/book.png) ;
+       background-position: center center;
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size: cover;
+   }
+    
     a:link {
         text-decoration: none;
     }
@@ -20,9 +29,15 @@ include "connection.php";
 
 <body>
     <!-- nav -->
-    <nav class="navbar navbar-expand-lg bg-info ">
-        <div class="container-fluid d-flex justify-content-center align-item">
-            <a class="navbar-brand" href="#">Quize</a>
+   
+    <nav class="navbar navbar-expand-lg mb-5 mt-5">
+        <div class="container-fluid ">
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <!-- <span>20:00</span> -->
+                <span>
+                
+                </span>
+            </div>
         </div>
     </nav>
     <!--/nav -->
@@ -32,21 +47,25 @@ include "connection.php";
                 <div class="col">
 
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control">
+                <div class="col text-white">
+                <center> <h5 style="font-family: Noto Sans;">Login to </h5><h4 style="font-family: Noto Sans;">Online Quiz System</h4></center><br>
+                    <div class="mb-5">
+                        <!-- <label>Name</label> -->
+                        <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
                     </div>
-                    <div class="mb-3">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control">
+                    <div class="mb-5">
+                        <!-- <label>Password</label> -->
+                        <input type="password" name="password" class="form-control" placeholder="password">
                     </div>
                     <div class="d-grid gap-2 ">
                         <button type="submit" name="submit" class="btn btn-primary text-align-center">Login</button>
                     </div>
-                    <div class="d-grid gap-2 mt-3">
+                    <!-- <div class="d-grid gap-2 mt-3">
                         <a href="register.php" class="btn btn-primary">Register Now</a>
-                    </div>
+                    </div> -->
+                    <div class="form-group text-center mt-4">
+					 <span class="text-white">Don't have an account?</span> <a href="register.php" class="text-danger"><strong>Register</strong></a> Here..
+					</div>
                     <div class="alert alert-danger mt-3" id="fail" role="alert" style="display: none">
                         <strong>Does Not Match</strong> Invalid Name or Password
                     </div>
@@ -73,7 +92,7 @@ include "connection.php";
         } else {
         ?>
             <script type="text/javascript">
-                window.location = "index.php";
+                window.location = "index1.php";
             </script>
     <?php
         }

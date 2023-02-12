@@ -12,43 +12,55 @@ include "connection.php";
     <title>Login</title>
 
 </head>
-
+<style>
+    
+    body{
+       width: 100%;
+       background: url(images/book.png) ;
+       background-position: center center;
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size: cover;
+   }
+         
+    a:link {
+        text-decoration: none;
+    }
+</style>
 <body>
         <!-- nav -->
-        <nav class="navbar navbar-expand-lg bg-info ">
-        <div class="container-fluid d-flex justify-content-center align-item">
-            <a class="navbar-brand" href="#">Quize</a>
-        </div>
-    </nav>
+    
+    <nav class="navbar navbar-expand-lg mb-4 mt-2"></nav>
     <!--/nav -->
     <form method="post">
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
                 <div class="col">
 
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control">
+                <div class="col text-white">
+                <center> <h5 style="font-family: Noto Sans;">Register to </h5><h4 style="font-family: Noto Sans;">Online Quiz System</h4></center><br>
+                    <div class="mb-4">
+                        <!-- <label>Name</label> -->
+                        <input type="text" name="name" class="form-control" placeholder="Enter your name">
                     </div>
-                    <div class="mb-3">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control">
+                    <div class="mb-4">
+                        <!-- <label>Email</label> -->
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email">
                     </div>
-                    <div class="mb-3">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control">
+                    <div class="mb-4">
+                        <!-- <label>Password</label> -->
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <div class="mb-3">
-                        <label>Confrim Password</label>
-                        <input type="password" name="confirm" class="form-control">
+                    <div class="mb-4">
+                        <!-- <label>Confrim Password</label> -->
+                        <input type="password" name="confirm" class="form-control" placeholder="Confrim Passwored">
                     </div>
                     <div class="d-grid gap-2 ">
                         <button type="submit" name="submit" class="btn btn-primary text-align-center">Register</button>
                     </div>
-                    <div class="d-grid gap-2 mt-3">
-                      <a href="login.php" class="btn btn-primary">Login Now</a>
+                    <div class="form-group text-center mt-4">
+                    <span class="text-white">Already have an account! </span> <a href="login.php" class="text-danger"><strong>Login</strong> </a> Here..
                     </div>
                     <div class="alert alert-success mt-3" id="success" role="alert" style="display: none">
                        <strong>Success!</strong> Success Registration successfuly.

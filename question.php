@@ -1,6 +1,5 @@
 <?php
 include "connection.php";
- $title = $_GET['title'] 
 ?>
 <!DOCTYPE html>
 
@@ -13,8 +12,11 @@ include "connection.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </head>
 <style>
-   a:link {text-decoration:none;}
+    a:link {
+        text-decoration: none;
+    }
 </style>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-info mb-2">
         <div class="container-fluid">
@@ -43,14 +45,14 @@ include "connection.php";
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                 <!-- <span>20:00</span> -->
                 <span>
-                <?php
-                $title = $_GET["title"];
-                $res = mysqli_query($con, " select time from addexam where title = '$title'");
-                while ($row = mysqli_fetch_array($res)) {
-                    $time = $row["time"];
-                }
-                echo "$time"
-                ?>
+                    <?php
+                    $title = $_GET["title"];
+                    $res = mysqli_query($con, " select time from addexam where title = '$title'");
+                    while ($row = mysqli_fetch_array($res)) {
+                        $time = $row["time"];
+                    }
+                    echo "$time"
+                    ?>
                 </span>
             </div>
         </div>
@@ -58,48 +60,63 @@ include "connection.php";
     <div class=" container">
         <div class="row bg-light">
             <div class="col mt-4 mb-4">
-                <form action="result.php" method="post">
-                <input type='text' name='title' value='<?php echo $title ?>' hidden>
-
+                
                 <?php
+
+                $title = $_GET["title"];
                 $res = mysqli_query($con, " select question,opt1,opt2,opt3,opt4 from question where title = '$title' ");
-                while ($row = mysqli_fetch_array($res)) {
-                    // for ($i=1; $i<=10; $i++) {
-                    //     echo $i;
-                    //  }
-                    $question = $row["question"];
-                    $option_a = $row["opt1"];
-                    $option_b = $row["opt2"];
-                    $option_c = $row["opt3"];
-                    $option_d = $row["opt4"];
-                    echo " <div class=' d-flex justify-content-start mx-4'>
-                        <span><strong>$question</strong></span>
+                // while ($row = mysqli_fetch_array($res)) {
+                // for ($i=1; $i<=10; $i++) {
+                //     echo $i;
+                //  }
+
+                
+               $row = mysqli_fetch_array($res);
+                  
+                $data = [
+                    $question = $row["question"],
+                    $option_a = $row["opt1"],
+                    $option_b = $row["opt2"],
+                    $option_c = $row["opt3"],
+                    $option_d = $row["opt4"]
+                ];
+
+
+                echo " <div class=' d-flex justify-content-start mx-4'>
+                        <span><strong>$data[0]</strong></span>
                     </div>
                     <div class='form-check form-check-inline mx-5 mt-3'>
-                        <input class='form-check-input' type='checkbox' name='opt1' id='inlineRadio1' value='$option_a'>
-                        <label class='form-check-label' for='inlineRadio1'>$option_a</label>
+                        <input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio1' value='option1'>
+                        <label class='form-check-label' for='inlineRadio1'>$data[1]</label>
                     </div>
                     <div class='form-check form-check-inline mx-5'>
-                        <input class='form-check-input' type='checkbox' name='opt2' id='inlineRadio2' value='$option_b'>
-                        <label class='form-check-label' for='inlineRadio2'>$option_b</label>
+                        <input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio2' value='option2'>
+                        <label class='form-check-label' for='inlineRadio2'>$data[2]</label>
                     </div>
                     <div class='form-check form-check-inline mx-5'>
-                        <input class='form-check-input' type='checkbox' name='opt3' id='inlineRadio1' value='$option_c'>
-                        <label class='form-check-label' for='inlineRadio1'>$option_c</label>
+                        <input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio1' value='option1'>
+                        <label class='form-check-label' for='inlineRadio1'>$data[3]</label>
                     </div>
                     <div class='form-check form-check-inline mx-5 mb-5'>
-                        <input class='form-check-input' type='checkbox' name='opt4' id='inlineRadio2' value='$option_d'>
-                        <label class='form-check-label' for='inlineRadio2'>$option_d</label>
-                    </div>
-                    "
-
-                    ;
-                }
+                        <input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio2' value='option2'>
+                        <label class='form-check-label' for='inlineRadio2'>$data[4]</label>
+                    </div>";
+            // }
                 ?>
                 <div class="d-flex justify-content-end">
-                <button type="submit" class='btn btn-success mb-4 mt-5 ' style="width:200px;">Show Result</button>
+                     <button type='button' onClick="previous()" id="backward" class='btn btn-success mb-4 mt-5 mx-1' style="width:100px;">Previous</button>
+                     <button type='button' onclick="next()" id="forward" class='btn btn-success mb-4 mt-5' style="width:100px;"><a href="question.php" class="text-white">Next</a></button> 
+                    <script>
+                        function next() {
+
+                            window.history.forward();
+                        }
+
+                        function previous() {
+                            window.history.back();
+                        }
+                    </script>
                 </div>
-                </form>
             </div>
         </div>
     </div>
