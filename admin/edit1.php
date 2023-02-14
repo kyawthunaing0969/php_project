@@ -16,12 +16,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 <style>
@@ -29,21 +29,29 @@
 </style>
 <body>
     <!-- nav -->
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active text-info" href="add.php">
-                        <h5>Add Subject</h5>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active mx-4 text-info" href="question.php">
-                        <h5>Add Question</h5>
-                    </a>
-                </li>
-            </ul>
-            <a href="../home.php" class="text-black"><strong>Log Out</strong></a>
+    <nav class="navbar navbar-expand-lg bg-info ">
+        <div class="container-fluid">
+            <!-- <a class="navbar-brand" href="#"><b> Online Quizz System</b></a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../home.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="add.php"><i class="fa-solid fa-pen-to-square mx-2"></i><b>Add Subject</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="question.php"><i class="fa-solid fa-clipboard-question mx-2"></i></i><b>Add Question</b></a>
+                    </li>
+                </ul>
+
+                <i class="fa-solid fa-unlock"></i>
+                <a href="login.php" class="text-black mx-2"><b>Admin</b></a>
+                <a href="../home.php" class="text-black mx-2"><i class="fa-solid fa-right-from-bracket mx-2"></i><b>Log Out</b></a>
+            </div>
         </div>
     </nav>
     <!--/nav -->
@@ -91,7 +99,7 @@
                             <input type="Text" class="form-control" name="answer" value="<?php echo $answer; ?>">
                         </div>
 
-                        <button type="submit" name="submit2" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit2" class="btn btn-primary">Update</button>
                     </div>
 
                 </form>

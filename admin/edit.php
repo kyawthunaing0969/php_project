@@ -28,26 +28,31 @@ while ($row = mysqli_fetch_array($res)) {
 </style>
 
 <body>
+<nav class="navbar navbar-expand-lg bg-info ">
+        <div class="container-fluid">
+            <!-- <a class="navbar-brand" href="#"><b> Online Quizz System</b></a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../home.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="add.php"><i class="fa-solid fa-pen-to-square mx-2"></i><b>Add Subject</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="question.php"><i class="fa-solid fa-clipboard-question mx-2"></i></i><b>Add Question</b></a>
+                    </li>
+                </ul>
 
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active text-info" href="add.php">
-                        <h5>Add Subject</h5>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active mx-4 text-info" href="question.php">
-                        <h5>Add Question</h5>
-                    </a>
-                </li>
-            </ul>
-            <a href="../home.php" class="text-black"><strong>Log Out</strong></a>
+                <i class="fa-solid fa-unlock"></i>
+                <a href="login.php" class="text-black mx-2"><b>Admin</b></a>
+                <a href="../home.php" class="text-black mx-2"><i class="fa-solid fa-right-from-bracket mx-2"></i><b>Log Out</b></a>
+            </div>
         </div>
     </nav>
-
-
     <!-- dashboard -->
     <div class="container">
         <div class="row">
