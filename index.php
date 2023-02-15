@@ -47,7 +47,7 @@ $_SESSION['title'] = $title;
     </div>
   </nav>
 <nav>
-<span id='show'></span>
+<span id='show'></span> 
 
 </nav>
 

@@ -67,13 +67,13 @@ include "connection.php";
 
             echo " <div class='col'>
             <div class='card shadow-sm' >
-              <img class='mx-auto' src='images/$image'>
+            <img src='images/$image'>
               <div class='card-body'>
                 <div class='d-flex justify-content-between align-items-center'>
                   <div class='btn-group'>
                     <a href='index.php?title=$row[title]' class='btn btn-sm btn-outline-secondary'>$title</a>
                   </div>
-                  <small class='text-muted'>9 mins</small>
+                  <small class='text-muted'>80 mins</small>
                 </div>
               </div>
             </div>

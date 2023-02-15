@@ -6,7 +6,7 @@ $res1 = mysqli_query($con, "select count(title) as count, answer,opt1 from quest
 while ($row = mysqli_fetch_array($res1)) {
     $total = $row["count"];
     $answer = $row["answer"];
-    $opt1 = $row["opt1"];
+    // $opt1 = $row["opt1"];
 }
 
 $res1 = mysqli_query($con, "select time from addexam where title = '$title'");
@@ -24,7 +24,8 @@ $correct = 0;
 $wrong = 0;
 
 $title = $_POST['title'];
-
+session_start();
+$_SESSION['title'] = $title;
 $res1 = mysqli_query($con, "select opt2,answer from question where title = '$title'");
 while ($row = mysqli_fetch_array($res1)) {
     $answer = $row["answer"];
