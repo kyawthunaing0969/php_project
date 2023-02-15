@@ -146,7 +146,7 @@ if (isset($_POST["submit"])) {
                             <tr>
                                 <th>ID</th>
                                 <th>Add Subject</th>
-                                <th>Exam time in minutes</th>
+                                <th>Quizz time in minutes</th>
                                 <th>Images</th>
                                 <th>Actions</th>
                             </tr>

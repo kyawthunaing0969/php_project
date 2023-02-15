@@ -51,11 +51,11 @@ include "connection.php";
                 <center> <h5 style="font-family: Noto Sans;">Login to </h5><h4 style="font-family: Noto Sans;">Online Quiz System</h4></center><br>
                     <div class="mb-5">
                         <!-- <label>Name</label> -->
-                        <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
+                        <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required>
                     </div>
                     <div class="mb-5">
                         <!-- <label>Password</label> -->
-                        <input type="password" name="password" class="form-control" placeholder="password">
+                        <input type="password" name="password" class="form-control" placeholder="password" required>
                     </div>
                     <div class="d-grid gap-2 ">
                         <button type="submit" name="submit" class="btn btn-primary text-align-center">Login</button>

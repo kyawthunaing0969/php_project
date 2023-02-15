@@ -13,7 +13,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
-
+<style>
+    a:link {
+        text-decoration: none;
+    }
+</style>
 <body>
 <nav class="navbar navbar-expand-lg bg-info mb-5">
     <div class="container-fluid">
@@ -53,11 +57,11 @@
             <div class="col">
                 <div class="mb-3">
                     <label>Name</label>
-                    <input type="text" name="name" class="form-control" >
+                    <input type="text" name="name" class="form-control" required >
                 </div>
                 <div class="mb-3">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control" >
+                    <input type="password" name="password" class="form-control" required>
                 </div>
                 <div class="d-grid gap-2 ">
                     <button type="submit" name="submit" class="btn btn-primary text-align-center">Login</button>

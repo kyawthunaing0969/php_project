@@ -8,7 +8,7 @@ include "connection.php";
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Home pages</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -29,7 +29,7 @@ include "connection.php";
 <body>
   <nav class="navbar navbar-expand-lg bg-info mb-2 ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><b> Online Quizz System</b></a>
+      <!-- <a class="navbar-brand" href="#"><b> Online Quizz System</b></a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,7 +39,10 @@ include "connection.php";
             <a class="nav-link active" href="home.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="about.php"><i class="fa-solid fa-people-group mx-2"></i><b>About us</b></a>
+            <a class="nav-link active" href="showRegister.php"><i class="fa-solid fa-users mx-2"></i><b>Show User</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.php"><i class="fa-solid fa-people-group mx-2"></i><b>About Us</b></a>
           </li>
         </ul>
 
@@ -54,7 +57,7 @@ include "connection.php";
       <div class="container">
         <div class=' d-flex justify-content-center mx-4 mt-2 mb-5'>
           <span><strong>
-              <h1>CHOOSE YOUR TOPIC AND ANSWER</h1>
+              <h1>CHOOSE YOUR TOPIC</h1>
             </strong></span>
         </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -67,13 +70,13 @@ include "connection.php";
 
             echo " <div class='col'>
             <div class='card shadow-sm' >
-            <img src='images/$image'>
+            <a href='index.php?title=$row[title]'><img class='mx-auto' src='images/$image'></a>
               <div class='card-body'>
                 <div class='d-flex justify-content-between align-items-center'>
                   <div class='btn-group'>
                     <a href='index.php?title=$row[title]' class='btn btn-sm btn-outline-secondary'>$title</a>
                   </div>
-                  <small class='text-muted'>80 mins</small>
+                  <small class='text-muted'>9 mins</small>
                 </div>
               </div>
             </div>
