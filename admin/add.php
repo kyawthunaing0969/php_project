@@ -93,7 +93,7 @@ if (isset($_POST["submit"])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../home.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
+                        <a class="nav-link active" href="../index1.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="add.php"><i class="fa-solid fa-pen-to-square mx-2"></i><b>Add Subject</b></a>

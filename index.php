@@ -33,7 +33,7 @@ $_SESSION['title'] = $title;
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
-            <a class="nav-link active" href="home.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
+            <a class="nav-link active" href="index1.php"><i class="fa-solid fa-house-user mx-2 "></i><b>Home</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="about.php"><i class="fa-solid fa-people-group mx-2"></i><b>About us</b></a>
@@ -63,9 +63,14 @@ $_SESSION['title'] = $title;
                     <input type='text' name='title' value='<?php echo $title ?>' hidden>
                     <!-- <input type='text' name='answer' value='<?php echo $anser ?>' hidden> -->
                     <?php
+                    $co = 0;
                     $res = mysqli_query($con, " select question,opt1,opt2,opt3,opt4,answer from question where title = '$title' ");
+                    $arr = array($res);
                     while ($row = mysqli_fetch_array($res)) {
 
+                        for($i=1; $i<=count($arr); $i++){
+                            $co+=1;
+                        }
                         $question = $row["question"];
                         $option_a = $row["opt1"];
                         $option_b = $row["opt2"];
@@ -75,6 +80,7 @@ $_SESSION['title'] = $title;
                         echo " 
                     
                     <div class=' d-flex justify-content-start mx-4 mt-4'>
+                        <span><strong>$co</strong></span>.
                         <span><strong>$question</strong></span>
                     </div>
                     <div class='form-check form-check-inline mx-5 mt-3'>
