@@ -50,7 +50,7 @@
 
                 <i class="fa-solid fa-unlock"></i>
                 <a href="login.php" class="text-black mx-2"><b>Admin</b></a>
-                <a href="../home.php" class="text-black mx-2"><i class="fa-solid fa-right-from-bracket mx-2"></i><b>Log Out</b></a>
+                <a href="../index1.php" class="text-black mx-2"><i class="fa-solid fa-right-from-bracket mx-2"></i><b>Log Out</b></a>
             </div>
         </div>
     </nav>

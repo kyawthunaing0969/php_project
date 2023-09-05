@@ -76,7 +76,7 @@ include "connection.php";
                   <div class='btn-group'>
                     <a href='index.php?title=$row[title]' class='btn btn-sm btn-outline-secondary'>$title</a>
                   </div>
-                  <small class='text-muted'>9 mins</small>
+                  <small class='text-muted'>80 mins</small>
                 </div>
               </div>
             </div>

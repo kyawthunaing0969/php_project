@@ -43,6 +43,7 @@ $userput = $_POST['opt'];
 $db = "";
 $correct = 0;
 $wrong = 0;
+$questioncount = 0;
 
 $title = $_POST['title'];
 
@@ -55,6 +56,7 @@ while ($row = mysqli_fetch_array($res1)) {
     foreach ($arr as $key => $value)
      {
         $db = $value;
+        $questioncount +=1;
         //   echo $db;
        
         for ($i = 0; $i < count($userput); $i++) 
@@ -71,6 +73,7 @@ while ($row = mysqli_fetch_array($res1)) {
         }
      }
 }
+// $query = "insert into showuser(name,mark,Totalmark)vlaues('$username','$correct','$questioncount');";
 ?>
 
 

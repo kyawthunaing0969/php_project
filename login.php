@@ -78,6 +78,8 @@ include "connection.php";
     </form>
     <?php
     if (isset($_POST["submit"])) {
+        session_start();
+        $_SESSION['se'] = $_POST['name'];
 
         $count = 0;
         $sql = mysqli_query($con, " SELECT * FROM register WHERE name = '$_POST[name]' && '$_POST[password]'");
